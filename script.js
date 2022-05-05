@@ -19,6 +19,16 @@ function getNasaTitle(array) {
   return title;
 }
 
+function affichage(array, title) {
+  let result = ""
+  for (let i = 0; i < array.length; i++) {
+    result += `<figure style="display:flex; flex-direction:column; justify-content:center; width:50%; margin-left:25%" >
+    <img src='${array[i]}' alt="titre">
+    <figcaption style= "text-align:center; margin-top:15px; margin-bottom:30px">${title[i]}<figcaption></figure>`;
+  }
+  return result;
+}
+
 APP.get("/Nasale/Picture", async (req, res) => {
   try {
     const nasale_request = await fetch(
@@ -28,10 +38,10 @@ APP.get("/Nasale/Picture", async (req, res) => {
     let infos = getNasaPicture(nasale_response);
     let intox = getNasaTitle(nasale_response)
     console.log(infos, intox);
-    res.status(200).send({
-    infos, intox 
-      // message:`<img src=''>`
-    });
+    let result = affichage(infos, intox);
+    res.status(200).send(
+    result
+    );
   } catch (error) {
     console.log("C'est la merde walla...");
     res.status(500).send({ message: "❌ Erreur pour la requête de Nasale" });
