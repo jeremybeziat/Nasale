@@ -1,0 +1,19 @@
+{
+  "name": "nasale",
+  "version": "1.0.0",
+  "description": "Nasale un groupe aérospatiale, veut montré leurs découvertes et des photos de la Terre grâce à des satellites.",
+  "main": "index.js",
+  "type":"module",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "OsengScam",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "node": "^17.7.2",
+    "node-fetch": "^3.2.4",
+    "nodemon": "^2.0.16"
+  }
+}
