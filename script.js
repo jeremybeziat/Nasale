@@ -69,6 +69,63 @@ APP.get("/Nasale/February", async (req, res) => {
   }
 });
 
+APP.get("/Nasale/March", async (req, res) => {
+  try {
+    const nasale_request = await fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=gWIMl3cNb9eKccaobVNKWnzPwmOX18EiYfz3dXTN&start_date=2022-03-01&end_date=2022-03-31"
+    );
+    const nasale_response = await nasale_request.json();
+    let infos = getNasaPicture(nasale_response);
+    let intox = getNasaTitle(nasale_response);
+    console.log(infos, intox);
+    let result = affichage(infos, intox);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log("C'est la merde walla...");
+    res.status(500).send({ message: "❌ Erreur pour la requête de Nasale" });
+    console.log(error);
+  }
+});
+
+APP.get("/Nasale/April", async (req, res) => {
+  try {
+    const nasale_request = await fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=gWIMl3cNb9eKccaobVNKWnzPwmOX18EiYfz3dXTN&start_date=2022-04-01&end_date=2022-04-30"
+    );
+    const nasale_response = await nasale_request.json();
+    let infos = getNasaPicture(nasale_response);
+    let intox = getNasaTitle(nasale_response)
+    console.log(infos, intox);
+    let result = affichage(infos, intox);
+    res.status(200).send(
+    result
+    );
+  } catch (error) {
+    console.log("C'est la merde walla...");
+    res.status(500).send({ message: "❌ Erreur pour la requête de Nasale" });
+    console.log(error);
+  }
+});
+
+APP.get("/Nasale/May", async (req, res) => {
+  try {
+    const nasale_request = await fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=gWIMl3cNb9eKccaobVNKWnzPwmOX18EiYfz3dXTN&start_date=2022-05-01"
+    );
+    const nasale_response = await nasale_request.json();
+    let infos = getNasaPicture(nasale_response);
+    let intox = getNasaTitle(nasale_response)
+    console.log(infos, intox);
+    let result = affichage(infos, intox);
+    res.status(200).send(
+    result
+    );
+  } catch (error) {
+    console.log("C'est la merde walla...");
+    res.status(500).send({ message: "❌ Erreur pour la requête de Nasale" });
+    console.log(error);
+  }
+});
 APP.listen(PORT, () => {
   console.log(`✅ : Server is running on ${PORT}`);
 });
